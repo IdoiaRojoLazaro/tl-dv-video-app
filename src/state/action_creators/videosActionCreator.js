@@ -57,3 +57,20 @@ export const editVideo = (id, data) => {
     }
   };
 };
+
+export const newVideo = (data) => {
+  return async (dispatch) => {
+    const resp = await fetchWithToken(`videos`, data, 'POST');
+    const body = await resp.json();
+    if (resp.status === 200) {
+      const { data } = body;
+      dispatch({
+        type: types.videoCreated,
+        payload: data
+      });
+      return data;
+    } else {
+      dispatch(catchApiError(body));
+    }
+  };
+};

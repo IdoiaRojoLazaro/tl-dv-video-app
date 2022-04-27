@@ -16,6 +16,7 @@ import { VideoEditModal } from './VideoEditPage';
 
 import { Copy, Eye, PencilLine } from 'phosphor-react';
 import '../styles/components/_tables.scss';
+import { VideoNewModal } from './VideoNewPage';
 
 export const VideosPage = () => {
   const weightIcons = 'duotone';
@@ -25,6 +26,7 @@ export const VideosPage = () => {
 
   const [page, setPage] = useState(1);
   const [showEditModal, setShowEditModal] = useState(false);
+  const [showNewModal, setShowNewModal] = useState(false);
 
   const dispatch = useDispatch();
   const { status, videos, total, pageSize } = useSelector(
@@ -50,18 +52,23 @@ export const VideosPage = () => {
 
   return (
     <Layout>
-      <h1>Video list</h1>
+      <div className="flex space-between">
+        <h1>Video list</h1>
+        <button className="btn btn-white" onClick={() => setShowNewModal(true)}>
+          Add new video
+        </button>
+      </div>
       <div>
         {status === types.loading ? (
           <Loading />
         ) : (
-          <div>
+          <div className="container-table">
             <table className="table table__custom">
               <thead className="table-head">
                 <tr>
                   <td>Id</td>
-                  <td>Slug</td>
                   <td>Title</td>
+                  <td>Slug</td>
                   <td>Url</td>
                   <td>Actions</td>
                 </tr>
@@ -70,23 +77,35 @@ export const VideosPage = () => {
                 {videos !== null &&
                   videos.map((v, i) => (
                     <tr key={`video-index-${i}`}>
-                      <td className="pointer" onClick={() => openVideo(v.id)}>
+                      <td
+                        className="pointer"
+                        onClick={() => openVideo(v.id)}
+                        data-th="Id"
+                      >
                         {v.id}
                       </td>
-                      <td className="pointer" onClick={() => openVideo(v.id)}>
-                        {v.attributes.slug}
-                      </td>
-                      <td className="pointer" onClick={() => openVideo(v.id)}>
+                      <td
+                        className="pointer"
+                        onClick={() => openVideo(v.id)}
+                        data-th="Title"
+                      >
                         {v.attributes.title}
                       </td>
-                      <td className="td-url">
-                        {v.attributes.url}{' '}
+                      <td
+                        className="pointer"
+                        onClick={() => openVideo(v.id)}
+                        data-th="Slug"
+                      >
+                        {v.attributes.slug}
+                      </td>
+                      <td className="td-url" data-th="Url">
+                        <span>{v.attributes.url} </span>
                         <Copy
                           className="pointer"
                           onClick={() => copyUrlVideo(v.attributes.url)}
                         />
                       </td>
-                      <td className="td-actions">
+                      <td className="td-actions" data-th="Actions">
                         <button onClick={() => openVideo(v.id)}>
                           <Eye weight={weightIcons} size={sizeIcons} />
                         </button>
@@ -107,6 +126,7 @@ export const VideosPage = () => {
           </div>
         )}
       </div>
+      <VideoNewModal show={showNewModal} setShow={setShowNewModal} />
       <VideoEditModal show={showEditModal} setShow={setShowEditModal} />
     </Layout>
   );

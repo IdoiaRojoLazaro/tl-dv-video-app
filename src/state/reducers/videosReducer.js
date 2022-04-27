@@ -39,6 +39,12 @@ export const videosReducer = (state = initialState, action) => {
           v.id === action.payload.id ? action.payload : v
         )
       };
+    case types.videoCreated:
+      return {
+        ...state,
+        status: types.completed,
+        videos: [...state.videos, action.payload]
+      };
 
     default:
       return state;

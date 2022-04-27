@@ -8,5 +8,6 @@ export const types = {
   setVideosLoading: '[videos] Get videos loading',
   setVideos: '[videos] Set videos',
   setVideoActive: '[videos] Set video active',
-  videoUpdated: '[video] Video updated'
+  videoUpdated: '[video] Video updated',
+  videoCreated: '[video] Video created'
 };

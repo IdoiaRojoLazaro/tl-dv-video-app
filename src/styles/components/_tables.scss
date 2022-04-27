@@ -1,8 +1,13 @@
 @import '../base/settings';
+.container-table {
+  width: 100%;
+  max-width: 100%;
+}
 .table {
   color: $c-blue-dark;
-  margin-bottom: 1rem;
+  margin-bottom: 10px;
   width: 100%;
+  max-width: 100%;
   td {
     padding: 10px;
   }
@@ -45,5 +50,61 @@
   }
   .td-actions button:not(:last-child) {
     margin-right: 5px;
+  }
+}
+
+@media screen and (max-width: 970px) {
+  .table-body .td-url {
+    max-width: 170px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .table,
+  tr,
+  td {
+    display: block;
+  }
+  .table {
+    width: 100%;
+    max-width: 100%;
+  }
+  .table-body {
+    display: block;
+  }
+  .table-head {
+    display: none;
+  }
+  tr:nth-of-type(2n) {
+    background-color: inherit;
+  }
+  tr td:first-child {
+    background: $bg-blue-light;
+    font-weight: bold;
+    font-size: 1.3em;
+  }
+  tr {
+    max-width: 100% !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  td {
+    max-width: 100% !important;
+    display: flex;
+    flex-direction: row;
+    span {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  .table-body td:before {
+    content: attr(data-th);
+    display: block;
+    text-align: center;
+    flex: 0;
+    margin-right: 10px;
+    width: 100px;
   }
 }
