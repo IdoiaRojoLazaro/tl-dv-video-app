@@ -1,0 +1,49 @@
+@import '../base/settings';
+.table {
+  color: $c-blue-dark;
+  margin-bottom: 1rem;
+  width: 100%;
+  td {
+    padding: 10px;
+  }
+}
+.table-head {
+  text-transform: uppercase;
+  font-size: 11px;
+}
+.table-body {
+  td,
+  th {
+    font-size: 14px;
+    max-width: 100%;
+    white-space: nowrap;
+    vertical-align: top;
+    border-top: 1px solid $bo-blue-light;
+  }
+  td {
+    font-weight: 500;
+    color: $c-blue-dark;
+    border-bottom: 1px solid $bo-blue-light !important;
+  }
+  tr:hover {
+    td {
+      background-color: $bg-blue-light;
+    }
+  }
+  tr.pointer {
+    cursor: pointer;
+  }
+  .td-url {
+    max-width: 450px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    svg {
+      display: inline-block;
+      margin-left: 10px;
+    }
+  }
+  .td-actions button:not(:last-child) {
+    margin-right: 5px;
+  }
+}

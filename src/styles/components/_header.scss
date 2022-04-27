@@ -1,0 +1,16 @@
+.header {
+  align-items: center;
+  background-color: $bg-blue-light;
+  box-shadow: 0 1px $bo-blue-light;
+  display: flex;
+  height: 44px;
+  padding: 0 40px;
+  .logo {
+    align-items: center;
+    display: flex;
+    h2 {
+      margin-left: 15px;
+      text-transform: uppercase;
+    }
+  }
+}

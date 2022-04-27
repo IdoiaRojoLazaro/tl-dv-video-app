@@ -1,0 +1,75 @@
+.ReactModalPortal > div {
+  opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 999;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.modal-bg {
+  background-color: rgba(0, 0, 0, 0.3);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  position: fixed;
+}
+
+.modal-header,
+.modal-footer {
+  padding: 0 20px;
+}
+
+.modal-body {
+  padding: 10px 20px;
+}
+
+.modal-header {
+  height: 56px;
+  box-shadow: inset 0 -1px $bo-blue-light;
+  display: flex;
+  align-items: center;
+  h3 {
+    font-size: 16px;
+    color: $c-blue-dark;
+    font-weight: 500;
+  }
+}
+
+.modal-body {
+  background-color: $bg-blue-light;
+  height: calc(100% - 56px - 60px);
+  overflow-y: scroll;
+}
+
+.modal-footer {
+  align-items: center;
+  box-shadow: inset 0 1px $bo-blue-light;
+  display: flex;
+  justify-content: flex-end;
+  height: 60px;
+  .modal-footer-locale-selector {
+    text-align: center;
+    width: 100%;
+    .MuiFormControl-root {
+      height: 36px;
+      min-width: 200px !important;
+      text-align: left;
+    }
+    .MuiOutlinedInput-root {
+      height: 100%;
+    }
+  }
+}
